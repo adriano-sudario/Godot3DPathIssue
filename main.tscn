@@ -35,7 +35,7 @@ path_u_distance = 1.0
 path_joined = false
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.989097, 0.000219876, 0.147268, -2.18279e-11, 0.999999, -0.00149303, -0.147268, 0.00147675, 0.989096, 0.0494659, -0.00243282, 0.0942444)
+transform = Transform3D(0.999578, -0.000622827, 0.0290444, 8.73115e-11, 0.99977, 0.0214391, -0.029051, -0.02143, 0.999349, 0.583472, -0.0985181, 0.325385)
 
 [node name="GobotSkin" parent="Path3D/PathFollow3D" instance=ExtResource("1_q8q6v")]
 transform = Transform3D(0.989097, 0, -0.147268, 0.000219876, 0.999999, 0.00147675, 0.147268, -0.00149303, 0.989096, -0.0241712, -0.0116873, -0.173532)
