@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyjcef6o3hryl"]
+
+[ext_resource type="PackedScene" uid="uid://cy36aygvs66pn" path="res://gobot/gobot_skin.tscn" id="1_q8q6v"]
+
+[sub_resource type="Environment" id="Environment_4y5ec"]
+
+[sub_resource type="Curve3D" id="Curve3D_ccxph"]
+_data = {
+"points": PackedVector3Array(0.00680739, 4.05312e-06, -0.141175, 0, 0, 0, 0.583472, -0.0985181, 0.325385, -2.20322, 0.283968, -1.59636, 2.20322, -0.283968, 1.59636, 0.704644, -0.00907516, 4.49463, 4.50606, -0.649088, 1.17231, -4.50606, 0.649088, -1.17231, -1.10488, 0.063866, 14.0235, 2.75402, 0.351221, 0.835036, -2.75402, -0.351221, -0.835036, -3.69336, 0.064549, 6.29446, 0, 0, 0, 0, 0, 0, -8.78766, 0.492319, 7.69636),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4y5ec")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.906401, -2.39791)
+curve = SubResource("Curve3D_ccxph")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.837429, 1.64173)
+polygon = PackedVector2Array(-1.31168, -0.24676, -1.28024, -0.216132, 1.06426, 0.0141544, 1.06981, -0.0029456)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.989097, 0.000219876, 0.147268, -2.18279e-11, 0.999999, -0.00149303, -0.147268, 0.00147675, 0.989096, 0.0494659, -0.00243282, 0.0942444)
+
+[node name="GobotSkin" parent="Path3D/PathFollow3D" instance=ExtResource("1_q8q6v")]
+transform = Transform3D(0.989097, 0, -0.147268, 0.000219876, 0.999999, 0.00147675, 0.147268, -0.00149303, 0.989096, -0.0241712, -0.0116873, -0.173532)
+
+[node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D/GobotSkin"]
+transform = Transform3D(-0.987944, 0, 0.154814, 0, 1, 0, -0.154814, 0, -0.987944, 0, 0.920262, -2.52738)
